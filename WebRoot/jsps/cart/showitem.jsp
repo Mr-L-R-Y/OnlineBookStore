@@ -90,7 +90,7 @@
 	</tr>
 	<tr>
 		<td colspan="6">
-			<input id="addr" type="text" name="address" value="鸣新中路常州机电职业技术学院"/>
+			<input id="addr" type="text" name="address" value="哈尔滨宾西技术开发区大学城9号哈尔滨信息工程学院"/>
 		</td>
 	</tr>
 	<tr>
