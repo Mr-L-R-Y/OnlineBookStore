@@ -48,7 +48,7 @@
 		  <a href="<c:url value='/servlet/OrderServlet?method=myOrders'/>" target="body">我的订单</a>&nbsp;&nbsp;|&nbsp;&nbsp;
 		  <a href="<c:url value='/jsps/user/pwd.jsp'/>" target="body">修改密码</a>&nbsp;&nbsp;|&nbsp;&nbsp;
 		  <a href="<c:url value='/servlet/UserServlet?method=quit'/>" target="_parent">退出</a>&nbsp;&nbsp;|&nbsp;&nbsp;
-		  <a href="http://www.czmec.cn" target="_top">联系我们</a>	
+		  <a href="https://www.greathiit.com/" target="_top">联系我们</a>	
 	</c:otherwise>
 </c:choose>
 
