@@ -1704,14 +1704,16 @@
           : this._daylightSavingAdjust(
               new Date(inst.currentYear, inst.currentMonth, inst.currentDay)
             );
-      return this._get(inst, "rangeSelect") ? [
-          inst.rangeStart || startDate,
-          !inst.endYear
-            ? inst.rangeStart || startDate
-            : this._daylightSavingAdjust(
-                new Date(inst.endYear, inst.endMonth, inst.endDay)
-              ),
-        ] : startDate;
+      return this._get(inst, "rangeSelect")
+        ? [
+            inst.rangeStart || startDate,
+            !inst.endYear
+              ? inst.rangeStart || startDate
+              : this._daylightSavingAdjust(
+                  new Date(inst.endYear, inst.endMonth, inst.endDay)
+                ),
+          ]
+        : startDate;
     },
 
     /* Generate the HTML for the current state of the date picker.

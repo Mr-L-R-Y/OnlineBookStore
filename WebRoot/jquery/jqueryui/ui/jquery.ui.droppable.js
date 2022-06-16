@@ -209,7 +209,7 @@
     switch (toleranceMode) {
       case "fit":
         return l <= x1 && x2 <= r && t <= y1 && y2 <= b;
-        
+
       case "intersect":
         return (
           l < x1 + draggable.helperProportions.width / 2 && // Right Half
@@ -217,7 +217,7 @@
           t < y1 + draggable.helperProportions.height / 2 && // Bottom Half
           y2 - draggable.helperProportions.height / 2 < b
         ); // Top Half
-        
+
       case "pointer":
         var draggableLeft =
             (draggable.positionAbs || draggable.position.absolute).left +
@@ -234,7 +234,7 @@
             droppable.proportions.width
           );
         return isOver;
-        
+
       case "touch":
         return (
           ((y1 >= t && y1 <= b) || // Top edge touching
@@ -244,10 +244,9 @@
             (x2 >= l && x2 <= r) || // Right edge touching
             (x1 < l && x2 > r)) // Surrounded horizontally
         );
-        
+
       default:
         return false;
-        
     }
   };
 

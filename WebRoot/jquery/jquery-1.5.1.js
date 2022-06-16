@@ -2103,11 +2103,8 @@
         if (name === "selected" && !jQuery.support.optSelected) {
           var parent = elem.parentNode;
           if (parent) {
-            
-
             // Make sure that it also works with optgroups, see #5701
             if (parent.parentNode) {
-              
             }
           }
         }
@@ -2463,7 +2460,10 @@
         }
 
         // remove generic event handler if no more handlers exist
-        if (eventType.length === 0 || (pos !== null && eventType.length === 1)) {
+        if (
+          eventType.length === 0 ||
+          (pos !== null && eventType.length === 1)
+        ) {
           if (
             !special.teardown ||
             special.teardown.call(elem, namespaces) === false
@@ -3236,7 +3236,9 @@
     },
 
     undelegate: function (selector, types, fn) {
-      return arguments.length === 0 ? this.unbind("live") : this.die(types, null, fn, selector);
+      return arguments.length === 0
+        ? this.unbind("live")
+        : this.die(types, null, fn, selector);
     },
 
     trigger: function (type, data) {
@@ -4161,7 +4163,6 @@
           // Accessing this property makes selected-by-default
           // options in Safari work properly
           if (elem.parentNode) {
-            
           }
 
           return elem.selected === true;
@@ -4342,7 +4343,9 @@
 
               var diff = elem.nodeIndex - last;
 
-              return first === 0 ? diff === 0 : diff % first === 0 && diff / first >= 0;
+              return first === 0
+                ? diff === 0
+                : diff % first === 0 && diff / first >= 0;
           }
         },
 
@@ -4442,8 +4445,6 @@
     // Also verifies that the returned array holds DOM nodes
     // (which is not the case in the Blackberry browser)
     try {
-      
-
       // Provide a fallback method if it does not work
     } catch (e) {
       makeArray = function (array, results) {
@@ -5644,14 +5645,20 @@
         parent = value && value.parentNode;
 
         // If we're in a fragment, just use that instead of building a new one
-        results = jQuery.support.parentNode &&
+        results =
+          jQuery.support.parentNode &&
           parent &&
           parent.nodeType === 11 &&
-          parent.childNodes.length === this.length ? { fragment: parent } : jQuery.buildFragment(args, this, scripts);
+          parent.childNodes.length === this.length
+            ? { fragment: parent }
+            : jQuery.buildFragment(args, this, scripts);
 
         fragment = results.fragment;
 
-        first = fragment.childNodes.length === 1 ? (fragment = fragment.firstChild) : fragment.firstChild;
+        first =
+          fragment.childNodes.length === 1
+            ? (fragment = fragment.firstChild)
+            : fragment.firstChild;
 
         if (first) {
           table = table && jQuery.nodeName(first, "tr");
@@ -7062,7 +7069,7 @@
       // Remove hash character (#7531: and string promotion)
       // Add protocol if not provided (#5866: IE7 issue with protocol-less urls)
       // We also use the url parameter if available
-      s.url = (String(url || s.url))
+      s.url = String(url || s.url)
         .replace(rhash, "")
         .replace(rprotocol, ajaxLocParts[1] + "//");
 
@@ -7075,11 +7082,13 @@
       // Determine if a cross-domain request is in order
       if (!s.crossDomain) {
         parts = rurl.exec(s.url.toLowerCase());
-        s.crossDomain = Boolean(parts &&
-          (parts[1] != ajaxLocParts[1] ||
-            parts[2] != ajaxLocParts[2] ||
-            (parts[3] || (parts[1] === "http:" ? 80 : 443)) !=
-              (ajaxLocParts[3] || (ajaxLocParts[1] === "http:" ? 80 : 443))));
+        s.crossDomain = Boolean(
+          parts &&
+            (parts[1] != ajaxLocParts[1] ||
+              parts[2] != ajaxLocParts[2] ||
+              (parts[3] || (parts[1] === "http:" ? 80 : 443)) !=
+                (ajaxLocParts[3] || (ajaxLocParts[1] === "http:" ? 80 : 443)))
+        );
       }
 
       // Convert data if not already a string

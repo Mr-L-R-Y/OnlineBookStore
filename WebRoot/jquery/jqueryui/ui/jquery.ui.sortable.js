@@ -586,10 +586,12 @@
         verticalDirection = this._getDragVerticalDirection(),
         horizontalDirection = this._getDragHorizontalDirection();
 
-      return this.floating && horizontalDirection ? ((horizontalDirection == "right" && isOverRightHalf) ||
-          (horizontalDirection == "left" && !isOverRightHalf)) : (verticalDirection &&
-          ((verticalDirection == "down" && isOverBottomHalf) ||
-            (verticalDirection == "up" && !isOverBottomHalf)));
+      return this.floating && horizontalDirection
+        ? (horizontalDirection == "right" && isOverRightHalf) ||
+            (horizontalDirection == "left" && !isOverRightHalf)
+        : verticalDirection &&
+            ((verticalDirection == "down" && isOverBottomHalf) ||
+              (verticalDirection == "up" && !isOverBottomHalf));
     },
 
     _getDragVerticalDirection: function () {

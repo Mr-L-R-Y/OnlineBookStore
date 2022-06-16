@@ -74,27 +74,32 @@
 
     scrollParent: function () {
       var scrollParent;
-      scrollParent = ($.browser.msie && /(static|relative)/.test(this.css("position"))) ||
-        /absolute/.test(this.css("position")) ? this.parents()
-          .filter(function () {
-            return (
-              /(relative|absolute|fixed)/.test($.curCSS(this, "position", 1)) &&
-              /(auto|scroll)/.test(
-                $.curCSS(this, "overflow", 1) +
-                  $.curCSS(this, "overflow-y", 1) +
-                  $.curCSS(this, "overflow-x", 1)
-              )
-            );
-          })
-          .eq(0) : this.parents()
-          .filter(function () {
-            return /(auto|scroll)/.test(
-              $.curCSS(this, "overflow", 1) +
-                $.curCSS(this, "overflow-y", 1) +
-                $.curCSS(this, "overflow-x", 1)
-            );
-          })
-          .eq(0);
+      scrollParent =
+        ($.browser.msie && /(static|relative)/.test(this.css("position"))) ||
+        /absolute/.test(this.css("position"))
+          ? this.parents()
+              .filter(function () {
+                return (
+                  /(relative|absolute|fixed)/.test(
+                    $.curCSS(this, "position", 1)
+                  ) &&
+                  /(auto|scroll)/.test(
+                    $.curCSS(this, "overflow", 1) +
+                      $.curCSS(this, "overflow-y", 1) +
+                      $.curCSS(this, "overflow-x", 1)
+                  )
+                );
+              })
+              .eq(0)
+          : this.parents()
+              .filter(function () {
+                return /(auto|scroll)/.test(
+                  $.curCSS(this, "overflow", 1) +
+                    $.curCSS(this, "overflow-y", 1) +
+                    $.curCSS(this, "overflow-x", 1)
+                );
+              })
+              .eq(0);
 
       return /fixed/.test(this.css("position")) || !scrollParent.length
         ? $(document)
@@ -2337,7 +2342,7 @@
     switch (toleranceMode) {
       case "fit":
         return l <= x1 && x2 <= r && t <= y1 && y2 <= b;
-        
+
       case "intersect":
         return (
           l < x1 + draggable.helperProportions.width / 2 && // Right Half
@@ -2345,7 +2350,7 @@
           t < y1 + draggable.helperProportions.height / 2 && // Bottom Half
           y2 - draggable.helperProportions.height / 2 < b
         ); // Top Half
-        
+
       case "pointer":
         var draggableLeft =
             (draggable.positionAbs || draggable.position.absolute).left +
@@ -2362,7 +2367,7 @@
             droppable.proportions.width
           );
         return isOver;
-        
+
       case "touch":
         return (
           ((y1 >= t && y1 <= b) || // Top edge touching
@@ -2372,10 +2377,9 @@
             (x2 >= l && x2 <= r) || // Right edge touching
             (x1 < l && x2 > r)) // Surrounded horizontally
         );
-        
+
       default:
         return false;
-        
     }
   };
 
@@ -3088,7 +3092,9 @@
 
         if (
           $.browser.msie &&
-          Boolean($(element).is(":hidden") || $(element).parents(":hidden").length)
+          Boolean(
+            $(element).is(":hidden") || $(element).parents(":hidden").length
+          )
         )
           continue;
 
@@ -4466,10 +4472,12 @@
         verticalDirection = this._getDragVerticalDirection(),
         horizontalDirection = this._getDragHorizontalDirection();
 
-      return this.floating && horizontalDirection ? ((horizontalDirection == "right" && isOverRightHalf) ||
-          (horizontalDirection == "left" && !isOverRightHalf)) : (verticalDirection &&
-          ((verticalDirection == "down" && isOverBottomHalf) ||
-            (verticalDirection == "up" && !isOverBottomHalf)));
+      return this.floating && horizontalDirection
+        ? (horizontalDirection == "right" && isOverRightHalf) ||
+            (horizontalDirection == "left" && !isOverRightHalf)
+        : verticalDirection &&
+            ((verticalDirection == "down" && isOverBottomHalf) ||
+              (verticalDirection == "up" && !isOverBottomHalf));
     },
 
     _getDragVerticalDirection: function () {
@@ -5749,19 +5757,22 @@
       if (options.animated) {
         var animOptions = {};
 
-        animOptions = options.collapsible && clickedIsActive ? {
-            toShow: $([]),
-            toHide: toHide,
-            complete: complete,
-            down: down,
-            autoHeight: options.autoHeight || options.fillSpace,
-          } : {
-            toShow: toShow,
-            toHide: toHide,
-            complete: complete,
-            down: down,
-            autoHeight: options.autoHeight || options.fillSpace,
-          };
+        animOptions =
+          options.collapsible && clickedIsActive
+            ? {
+                toShow: $([]),
+                toHide: toHide,
+                complete: complete,
+                down: down,
+                autoHeight: options.autoHeight || options.fillSpace,
+              }
+            : {
+                toShow: toShow,
+                toHide: toHide,
+                complete: complete,
+                down: down,
+                autoHeight: options.autoHeight || options.fillSpace,
+              };
 
         if (!options.proxied) {
           options.proxied = options.animated;
@@ -5904,7 +5915,7 @@
         $.each(fxAttrs, function (i, prop) {
           hideProps[prop] = "hide";
 
-          var parts = (String($.css(options.toShow[0], prop))).match(
+          var parts = String($.css(options.toShow[0], prop)).match(
             /^([\d+-.]+)(.*)$/
           );
           showProps[prop] = {
@@ -6628,11 +6639,11 @@
         form = radio.form,
         radios = $([]);
       if (name) {
-        radios = form ? $(form).find("[name='" + name + "']") : $("[name='" + name + "']", radio.ownerDocument).filter(
-            function () {
+        radios = form
+          ? $(form).find("[name='" + name + "']")
+          : $("[name='" + name + "']", radio.ownerDocument).filter(function () {
               return !this.form;
-            }
-          );
+            });
       }
       return radios;
     };
@@ -7537,7 +7548,9 @@
     _minHeight: function () {
       var options = this.options;
 
-      return options.height === "auto" ? options.minHeight : Math.min(options.minHeight, options.height);
+      return options.height === "auto"
+        ? options.minHeight
+        : Math.min(options.minHeight, options.height);
     },
 
     _position: function (position) {
@@ -7864,7 +7877,9 @@
           document.body.offsetHeight
         );
 
-        return scrollHeight < offsetHeight ? $(window).height() + "px" : scrollHeight + "px";
+        return scrollHeight < offsetHeight
+          ? $(window).height() + "px"
+          : scrollHeight + "px";
         // handle "good" browsers
       } else {
         return $(document).height() + "px";
@@ -7884,7 +7899,9 @@
           document.body.offsetWidth
         );
 
-        return scrollWidth < offsetWidth ? $(window).width() + "px" : scrollWidth + "px";
+        return scrollWidth < offsetWidth
+          ? $(window).width() + "px"
+          : scrollWidth + "px";
         // handle "good" browsers
       } else {
         return $(document).width() + "px";
@@ -8087,7 +8104,10 @@
           }
 
           step = self.options.step;
-          curVal = newVal = self.options.values && self.options.values.length ? self.values(index) : self.value();
+          curVal = newVal =
+            self.options.values && self.options.values.length
+              ? self.values(index)
+              : self.value();
 
           switch (event.keyCode) {
             case $.ui.keyCode.HOME:
@@ -8422,7 +8442,9 @@
           }
           this._refreshValue();
         } else {
-          return this.options.values && this.options.values.length ? this._values(index) : this.value();
+          return this.options.values && this.options.values.length
+            ? this._values(index)
+            : this.value();
         }
       } else {
         return this._values();
@@ -10148,7 +10170,7 @@
               );
             else $.datepicker._hideDatepicker();
             return false; // don't submit the form
-             // select the value on enter
+          // select the value on enter
           case 27:
             $.datepicker._hideDatepicker();
             break; // hide on escape
@@ -12681,11 +12703,13 @@ jQuery.effects ||
 
         if ($.fx.off || !effectMethod) {
           // delegate to the original method (e.g., .show()) if possible
-          return mode ? this[mode](args2.duration, args2.callback) : this.each(function () {
-              if (args2.callback) {
-                args2.callback.call(this);
-              }
-            });
+          return mode
+            ? this[mode](args2.duration, args2.callback)
+            : this.each(function () {
+                if (args2.callback) {
+                  args2.callback.call(this);
+                }
+              });
         }
 
         return effectMethod.call(this, args2);
@@ -13541,7 +13565,6 @@ jQuery.effects ||
       var elem = $(this),
         mode = $.effects.setMode(elem, o.options.mode || "show");
       times = (o.options.times || 5) * 2 - 1;
-      
 
       if (!isVisible) {
         elem.css("opacity", 0).show();

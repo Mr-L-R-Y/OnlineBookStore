@@ -570,7 +570,9 @@
 
         if (
           $.browser.msie &&
-          Boolean($(element).is(":hidden") || $(element).parents(":hidden").length)
+          Boolean(
+            $(element).is(":hidden") || $(element).parents(":hidden").length
+          )
         )
           continue;
 

@@ -436,19 +436,22 @@
       if (options.animated) {
         var animOptions = {};
 
-        animOptions = options.collapsible && clickedIsActive ? {
-            toShow: $([]),
-            toHide: toHide,
-            complete: complete,
-            down: down,
-            autoHeight: options.autoHeight || options.fillSpace,
-          } : {
-            toShow: toShow,
-            toHide: toHide,
-            complete: complete,
-            down: down,
-            autoHeight: options.autoHeight || options.fillSpace,
-          };
+        animOptions =
+          options.collapsible && clickedIsActive
+            ? {
+                toShow: $([]),
+                toHide: toHide,
+                complete: complete,
+                down: down,
+                autoHeight: options.autoHeight || options.fillSpace,
+              }
+            : {
+                toShow: toShow,
+                toHide: toHide,
+                complete: complete,
+                down: down,
+                autoHeight: options.autoHeight || options.fillSpace,
+              };
 
         if (!options.proxied) {
           options.proxied = options.animated;
@@ -591,7 +594,7 @@
         $.each(fxAttrs, function (i, prop) {
           hideProps[prop] = "hide";
 
-          var parts = (String($.css(options.toShow[0], prop))).match(
+          var parts = String($.css(options.toShow[0], prop)).match(
             /^([\d+-.]+)(.*)$/
           );
           showProps[prop] = {

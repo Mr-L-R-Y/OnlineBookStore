@@ -651,7 +651,7 @@
               );
             else $.datepicker._hideDatepicker();
             return false; // don't submit the form
-             // select the value on enter
+          // select the value on enter
           case 27:
             $.datepicker._hideDatepicker();
             break; // hide on escape

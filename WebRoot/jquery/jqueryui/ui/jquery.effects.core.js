@@ -584,11 +584,13 @@ jQuery.effects ||
 
         if ($.fx.off || !effectMethod) {
           // delegate to the original method (e.g., .show()) if possible
-          return mode ? this[mode](args2.duration, args2.callback) : this.each(function () {
-              if (args2.callback) {
-                args2.callback.call(this);
-              }
-            });
+          return mode
+            ? this[mode](args2.duration, args2.callback)
+            : this.each(function () {
+                if (args2.callback) {
+                  args2.callback.call(this);
+                }
+              });
         }
 
         return effectMethod.call(this, args2);

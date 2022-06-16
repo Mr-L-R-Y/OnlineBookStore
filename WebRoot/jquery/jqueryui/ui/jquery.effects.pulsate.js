@@ -16,7 +16,6 @@
       var elem = $(this),
         mode = $.effects.setMode(elem, o.options.mode || "show");
       times = (o.options.times || 5) * 2 - 1;
-      
 
       if (!isVisible) {
         elem.css("opacity", 0).show();

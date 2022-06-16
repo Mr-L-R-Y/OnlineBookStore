@@ -504,7 +504,9 @@
     _minHeight: function () {
       var options = this.options;
 
-      return options.height === "auto" ? options.minHeight : Math.min(options.minHeight, options.height);
+      return options.height === "auto"
+        ? options.minHeight
+        : Math.min(options.minHeight, options.height);
     },
 
     _position: function (position) {
@@ -831,7 +833,9 @@
           document.body.offsetHeight
         );
 
-        return scrollHeight < offsetHeight ? $(window).height() + "px" : scrollHeight + "px";
+        return scrollHeight < offsetHeight
+          ? $(window).height() + "px"
+          : scrollHeight + "px";
         // handle "good" browsers
       } else {
         return $(document).height() + "px";
@@ -851,7 +855,9 @@
           document.body.offsetWidth
         );
 
-        return scrollWidth < offsetWidth ? $(window).width() + "px" : scrollWidth + "px";
+        return scrollWidth < offsetWidth
+          ? $(window).width() + "px"
+          : scrollWidth + "px";
         // handle "good" browsers
       } else {
         return $(document).width() + "px";

@@ -31,11 +31,11 @@
         form = radio.form,
         radios = $([]);
       if (name) {
-        radios = form ? $(form).find("[name='" + name + "']") : $("[name='" + name + "']", radio.ownerDocument).filter(
-            function () {
+        radios = form
+          ? $(form).find("[name='" + name + "']")
+          : $("[name='" + name + "']", radio.ownerDocument).filter(function () {
               return !this.form;
-            }
-          );
+            });
       }
       return radios;
     };
