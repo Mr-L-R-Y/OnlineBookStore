@@ -739,7 +739,7 @@ $.extend(Datepick.prototype, {
 				inst.currentDay, inst.currentMonth, inst.currentYear));
 		inst.stayOpen = false;
 		if (this._datepickerShowing) {
-			duration = (duration != null ? duration : this._get(inst, 'duration'));
+			duration = (duration !== null ? duration : this._get(inst, 'duration'));
 			var showAnim = this._get(inst, 'showAnim');
 			var postProcess = function() {
 				$.datepick._tidyDialog(inst);
@@ -932,7 +932,7 @@ $.extend(Datepick.prototype, {
 	   @param  dateStr  (string) the chosen date */
 	_selectDate: function(id, dateStr) {
 		var inst = this._getInst($(id)[0]);
-		dateStr = (dateStr != null ? dateStr : this._formatDate(inst));
+		dateStr = (dateStr !== null ? dateStr : this._formatDate(inst));
 		if (this._get(inst, 'rangeSelect') && dateStr)
 			dateStr = (inst.rangeStart ? this._formatDate(inst, inst.rangeStart) :
 				dateStr) + this._get(inst, 'rangeSeparator') + dateStr;
@@ -1013,7 +1013,7 @@ $.extend(Datepick.prototype, {
 	                     monthNames       (string[12]) names of the months (optional)
 	   @return  (Date) the extracted date value or null if value is blank */
 	parseDate: function (format, value, settings) {
-		if (format == null || value == null)
+		if (format === null || value === null)
 			throw 'Invalid arguments';
 		value = (typeof value == 'object' ? value.toString() : value + '');
 		if (value == '')
@@ -1330,7 +1330,7 @@ $.extend(Datepick.prototype, {
 			}
 			return new Date(year, month, day);
 		};
-		date = (date == null ? defaultDate :
+		date = (date === null ? defaultDate :
 			(typeof date == 'string' ? offsetString(date, this._getDaysInMonth) :
 			(typeof date == 'number' ? (isNaN(date) ? defaultDate : offsetNumeric(date)) : date)));
 		date = (date && date.toString() == 'Invalid Date' ? defaultDate : date);
@@ -1728,7 +1728,7 @@ $.extend(Datepick.prototype, {
 	   @return  (number[2]) the number of rows and columns to display */
 	_getNumberOfMonths: function(inst) {
 		var numMonths = this._get(inst, 'numberOfMonths');
-		return (numMonths == null ? [1, 1] : (typeof numMonths == 'number' ? [1, numMonths] : numMonths));
+		return (numMonths === null ? [1, 1] : (typeof numMonths == 'number' ? [1, numMonths] : numMonths));
 	},
 
 	/* Determine the current minimum/maximum date.
@@ -1826,7 +1826,7 @@ $.extend(Datepick.prototype, {
 function extendRemove(target, props) {
 	$.extend(target, props);
 	for (var name in props)
-		if (props[name] == null || props[name] == undefined)
+		if (props[name] === null || props[name] == undefined)
 			target[name] = props[name];
 	return target;
 };

@@ -325,7 +325,7 @@ $.extend( $.ui, {
 if ( $.cleanData ) {
 	var _cleanData = $.cleanData;
 	$.cleanData = function( elems ) {
-		for ( var i = 0, elem; (elem = elems[i]) != null; i++ ) {
+		for ( var i = 0, elem; (elem = elems[i]) !== null; i++ ) {
 			$( elem ).triggerHandler( "remove" );
 		}
 		_cleanData( elems );
@@ -5180,7 +5180,7 @@ $.widget( "ui.autocomplete", {
 	},
 
 	search: function( value, event ) {
-		value = value != null ? value : this.element.val();
+		value = value !== null ? value : this.element.val();
 
 		// always save the actual value, not the one passed as an argument
 		this.term = this.element.val();
@@ -9136,7 +9136,7 @@ $.extend(Datepicker.prototype, {
 	_selectDate: function(id, dateStr) {
 		var target = $(id);
 		var inst = this._getInst(target[0]);
-		dateStr = (dateStr != null ? dateStr : this._formatDate(inst));
+		dateStr = (dateStr !== null ? dateStr : this._formatDate(inst));
 		if (inst.input)
 			inst.input.val(dateStr);
 		this._updateAlternate(inst);
@@ -9201,7 +9201,7 @@ $.extend(Datepicker.prototype, {
 	                     monthNames       string[12] - names of the months (optional)
 	   @return  Date - the extracted date value or null if value is blank */
 	parseDate: function (format, value, settings) {
-		if (format == null || value == null)
+		if (format === null || value === null)
 			throw 'Invalid arguments';
 		value = (typeof value == 'object' ? value.toString() : value + '');
 		if (value == '')
@@ -9572,7 +9572,7 @@ $.extend(Datepicker.prototype, {
 			}
 			return new Date(year, month, day);
 		};
-		var newDate = (date == null || date === '' ? defaultDate : (typeof date == 'string' ? offsetString(date) :
+		var newDate = (date === null || date === '' ? defaultDate : (typeof date == 'string' ? offsetString(date) :
 			(typeof date == 'number' ? (isNaN(date) ? defaultDate : offsetNumeric(date)) : new Date(date.getTime()))));
 		newDate = (newDate && newDate.toString() == 'Invalid Date' ? defaultDate : newDate);
 		if (newDate) {
@@ -9898,7 +9898,7 @@ $.extend(Datepicker.prototype, {
 	/* Determine the number of months to show. */
 	_getNumberOfMonths: function(inst) {
 		var numMonths = this._get(inst, 'numberOfMonths');
-		return (numMonths == null ? [1, 1] : (typeof numMonths == 'number' ? [1, numMonths] : numMonths));
+		return (numMonths === null ? [1, 1] : (typeof numMonths == 'number' ? [1, numMonths] : numMonths));
 	},
 
 	/* Determine the current maximum date - ensure no time components are set. */
@@ -9989,7 +9989,7 @@ function bindHover(dpDiv) {
 function extendRemove(target, props) {
 	$.extend(target, props);
 	for (var name in props)
-		if (props[name] == null || props[name] == undefined)
+		if (props[name] === null || props[name] == undefined)
 			target[name] = props[name];
 	return target;
 };
@@ -10348,7 +10348,7 @@ function filterStyles(styles) {
 		value = styles[name];
 		if (
 			// ignore null and undefined values
-			value == null ||
+			value === null ||
 			// ignore functions (when does this occur?)
 			$.isFunction(value) ||
 			// shorthand styles that need to be expanded

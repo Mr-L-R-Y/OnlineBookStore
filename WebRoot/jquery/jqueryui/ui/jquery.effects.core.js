@@ -194,7 +194,7 @@ function filterStyles(styles) {
 		value = styles[name];
 		if (
 			// ignore null and undefined values
-			value == null ||
+			value === null ||
 			// ignore functions (when does this occur?)
 			$.isFunction(value) ||
 			// shorthand styles that need to be expanded
