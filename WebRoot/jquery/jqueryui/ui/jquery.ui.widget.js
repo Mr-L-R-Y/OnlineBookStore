@@ -12,7 +12,7 @@
   if ($.cleanData) {
     var _cleanData = $.cleanData;
     $.cleanData = function (elems) {
-      for (var i = 0, elem; (elem = elems[i]) != null; i++) {
+      for (var i = 0, elem; (elem = elems[i]) !== null; i++) {
         $(elem).triggerHandler("remove");
       }
       _cleanData(elems);
@@ -48,7 +48,7 @@
 
     // create selector for plugin
     $.expr[":"][fullName] = function (elem) {
-      return !!$.data(elem, name);
+      return Boolean($.data(elem, name));
     };
 
     $[namespace] = $[namespace] || {};

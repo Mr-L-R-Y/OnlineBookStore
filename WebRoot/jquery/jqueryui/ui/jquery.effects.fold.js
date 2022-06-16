@@ -20,7 +20,7 @@
       // Set options
       var mode = $.effects.setMode(el, o.options.mode || "hide"); // Set Mode
       var size = o.options.size || 15; // Default fold size
-      var horizFirst = !!o.options.horizFirst; // Ensure a boolean value
+      var horizFirst = Boolean(o.options.horizFirst); // Ensure a boolean value
       var duration = o.duration ? o.duration / 2 : $.fx.speeds._default / 2;
 
       // Adjust

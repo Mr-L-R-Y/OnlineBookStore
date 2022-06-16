@@ -436,23 +436,19 @@
       if (options.animated) {
         var animOptions = {};
 
-        if (options.collapsible && clickedIsActive) {
-          animOptions = {
+        animOptions = options.collapsible && clickedIsActive ? {
             toShow: $([]),
             toHide: toHide,
             complete: complete,
             down: down,
             autoHeight: options.autoHeight || options.fillSpace,
-          };
-        } else {
-          animOptions = {
+          } : {
             toShow: toShow,
             toHide: toHide,
             complete: complete,
             down: down,
             autoHeight: options.autoHeight || options.fillSpace,
           };
-        }
 
         if (!options.proxied) {
           options.proxied = options.animated;
@@ -595,7 +591,7 @@
         $.each(fxAttrs, function (i, prop) {
           hideProps[prop] = "hide";
 
-          var parts = ("" + $.css(options.toShow[0], prop)).match(
+          var parts = (String($.css(options.toShow[0], prop))).match(
             /^([\d+-.]+)(.*)$/
           );
           showProps[prop] = {

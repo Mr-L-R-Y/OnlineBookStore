@@ -39,7 +39,7 @@
       this.element.addClass("ui-resizable");
 
       $.extend(this, {
-        _aspectRatio: !!o.aspectRatio,
+        _aspectRatio: Boolean(o.aspectRatio),
         aspectRatio: o.aspectRatio,
         originalElement: this.element,
         _proportionallyResizeElements: [],
@@ -142,7 +142,7 @@
           if (/sw|se|ne|nw/.test(handle)) axis.css({ zIndex: ++o.zIndex });
 
           //TODO : What's going on here?
-          if ("se" == handle) {
+          if (handle == "se") {
             axis.addClass("ui-icon ui-icon-gripsmall-diagonal-se");
           }
 
@@ -570,7 +570,7 @@
 
         if (
           $.browser.msie &&
-          !!($(element).is(":hidden") || $(element).parents(":hidden").length)
+          Boolean($(element).is(":hidden") || $(element).parents(":hidden").length)
         )
           continue;
 

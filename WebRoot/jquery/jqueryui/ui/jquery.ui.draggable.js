@@ -308,7 +308,7 @@
         obj = obj.split(" ");
       }
       if ($.isArray(obj)) {
-        obj = { left: +obj[0], top: +obj[1] || 0 };
+        obj = { left: Number(obj[0]), top: Number(obj[1]) || 0 };
       }
       if ("left" in obj) {
         this.offset.click.left = obj.left + this.margins.left;

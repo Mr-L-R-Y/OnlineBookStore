@@ -612,8 +612,8 @@
             $.datepick._adjustDate(
               event.target,
               event.ctrlKey
-                ? +$.datepick._get(inst, "stepBigMonths")
-                : +$.datepick._get(inst, "stepMonths"),
+                ? Number($.datepick._get(inst, "stepBigMonths"))
+                : Number($.datepick._get(inst, "stepMonths")),
               "M"
             );
             break; // next month/year on page down/+ ctrl
@@ -656,8 +656,8 @@
               $.datepick._adjustDate(
                 event.target,
                 event.ctrlKey
-                  ? +$.datepick._get(inst, "stepBigMonths")
-                  : +$.datepick._get(inst, "stepMonths"),
+                  ? Number($.datepick._get(inst, "stepBigMonths"))
+                  : Number($.datepick._get(inst, "stepMonths")),
                 "M"
               );
             // next month/year on alt + right/+ ctrl
@@ -959,7 +959,7 @@
         );
       inst.stayOpen = false;
       if (this._datepickerShowing) {
-        duration = duration != null ? duration : this._get(inst, "duration");
+        duration = duration !== null ? duration : this._get(inst, "duration");
         var showAnim = this._get(inst, "showAnim");
         var postProcess = function () {
           $.datepick._tidyDialog(inst);
@@ -1178,7 +1178,7 @@
 	   @param  dateStr  (string) the chosen date */
     _selectDate: function (id, dateStr) {
       var inst = this._getInst($(id)[0]);
-      dateStr = dateStr != null ? dateStr : this._formatDate(inst);
+      dateStr = dateStr !== null ? dateStr : this._formatDate(inst);
       if (this._get(inst, "rangeSelect") && dateStr)
         dateStr =
           (inst.rangeStart
@@ -1273,8 +1273,8 @@
 	                     monthNames       (string[12]) names of the months (optional)
 	   @return  (Date) the extracted date value or null if value is blank */
     parseDate: function (format, value, settings) {
-      if (format == null || value == null) throw "Invalid arguments";
-      value = typeof value == "object" ? value.toString() : value + "";
+      if (format === null || value === null) throw "Invalid arguments";
+      value = typeof value == "object" ? value.toString() : String(value);
       if (value == "") return null;
       settings = settings || {};
       var shortYearCutoff =
@@ -1450,7 +1450,7 @@
       };
       // Format a number, with leading zero if necessary
       var formatNumber = function (match, value, len) {
-        var num = "" + value;
+        var num = String(value);
         if (lookAhead(match)) while (num.length < len) num = "0" + num;
         return num;
       };
@@ -1619,7 +1619,7 @@
         return new Date(year, month, day);
       };
       date =
-        date == null
+        date === null
           ? defaultDate
           : typeof date == "string"
           ? offsetString(date, this._getDaysInMonth)
@@ -1704,16 +1704,14 @@
           : this._daylightSavingAdjust(
               new Date(inst.currentYear, inst.currentMonth, inst.currentDay)
             );
-      if (this._get(inst, "rangeSelect")) {
-        return [
+      return this._get(inst, "rangeSelect") ? [
           inst.rangeStart || startDate,
           !inst.endYear
             ? inst.rangeStart || startDate
             : this._daylightSavingAdjust(
                 new Date(inst.endYear, inst.endMonth, inst.endDay)
               ),
-        ];
-      } else return startDate;
+        ] : startDate;
     },
 
     /* Generate the HTML for the current state of the date picker.
@@ -2392,7 +2390,7 @@
 	   @return  (number[2]) the number of rows and columns to display */
     _getNumberOfMonths: function (inst) {
       var numMonths = this._get(inst, "numberOfMonths");
-      return numMonths == null
+      return numMonths === null
         ? [1, 1]
         : typeof numMonths == "number"
         ? [1, numMonths]
@@ -2518,7 +2516,7 @@
   function extendRemove(target, props) {
     $.extend(target, props);
     for (var name in props)
-      if (props[name] == null || props[name] == undefined)
+      if (props[name] === null || props[name] == undefined)
         target[name] = props[name];
     return target;
   }

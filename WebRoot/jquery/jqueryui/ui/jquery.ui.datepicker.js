@@ -651,7 +651,7 @@
               );
             else $.datepicker._hideDatepicker();
             return false; // don't submit the form
-            break; // select the value on enter
+             // select the value on enter
           case 27:
             $.datepicker._hideDatepicker();
             break; // hide on escape
@@ -668,8 +668,8 @@
             $.datepicker._adjustDate(
               event.target,
               event.ctrlKey
-                ? +$.datepicker._get(inst, "stepBigMonths")
-                : +$.datepicker._get(inst, "stepMonths"),
+                ? Number($.datepicker._get(inst, "stepBigMonths"))
+                : Number($.datepicker._get(inst, "stepMonths")),
               "M"
             );
             break; // next month/year on page down/+ ctrl
@@ -712,8 +712,8 @@
               $.datepicker._adjustDate(
                 event.target,
                 event.ctrlKey
-                  ? +$.datepicker._get(inst, "stepBigMonths")
-                  : +$.datepicker._get(inst, "stepMonths"),
+                  ? Number($.datepicker._get(inst, "stepBigMonths"))
+                  : Number($.datepicker._get(inst, "stepMonths")),
                 "M"
               );
             // next month/year on alt +right
@@ -860,7 +860,7 @@
         var duration = $.datepicker._get(inst, "duration");
         var postProcess = function () {
           var cover = inst.dpDiv.find("iframe.ui-datepicker-cover"); // IE6- only
-          if (!!cover.length) {
+          if (Boolean(cover.length)) {
             var borders = $.datepicker._getBorders(inst.dpDiv);
             cover.css({
               left: -borders[0],
@@ -899,7 +899,7 @@
       instActive = inst; // for delegate hover events
       inst.dpDiv.empty().append(this._generateHTML(inst));
       var cover = inst.dpDiv.find("iframe.ui-datepicker-cover"); // IE6- only
-      if (!!cover.length) {
+      if (Boolean(cover.length)) {
         //avoid call to outerXXXX() when not in IE6
         cover.css({
           left: -borders[0],
@@ -1190,7 +1190,7 @@
     _selectDate: function (id, dateStr) {
       var target = $(id);
       var inst = this._getInst(target[0]);
-      dateStr = dateStr != null ? dateStr : this._formatDate(inst);
+      dateStr = dateStr !== null ? dateStr : this._formatDate(inst);
       if (inst.input) inst.input.val(dateStr);
       this._updateAlternate(inst);
       var onSelect = this._get(inst, "onSelect");
@@ -1260,8 +1260,8 @@
 	                     monthNames       string[12] - names of the months (optional)
 	   @return  Date - the extracted date value or null if value is blank */
     parseDate: function (format, value, settings) {
-      if (format == null || value == null) throw "Invalid arguments";
-      value = typeof value == "object" ? value.toString() : value + "";
+      if (format === null || value === null) throw "Invalid arguments";
+      value = typeof value == "object" ? value.toString() : String(value);
       if (value == "") return null;
       var shortYearCutoff =
         (settings ? settings.shortYearCutoff : null) ||
@@ -1490,7 +1490,7 @@
       };
       // Format a number, with leading zero if necessary
       var formatNumber = function (match, value, len) {
-        var num = "" + value;
+        var num = String(value);
         if (lookAhead(match)) while (num.length < len) num = "0" + num;
         return num;
       };
@@ -1696,7 +1696,7 @@
         return new Date(year, month, day);
       };
       var newDate =
-        date == null || date === ""
+        date === null || date === ""
           ? defaultDate
           : typeof date == "string"
           ? offsetString(date)
@@ -2289,7 +2289,7 @@
     /* Determine the number of months to show. */
     _getNumberOfMonths: function (inst) {
       var numMonths = this._get(inst, "numberOfMonths");
-      return numMonths == null
+      return numMonths === null
         ? [1, 1]
         : typeof numMonths == "number"
         ? [1, numMonths]
@@ -2420,7 +2420,7 @@
   function extendRemove(target, props) {
     $.extend(target, props);
     for (var name in props)
-      if (props[name] == null || props[name] == undefined)
+      if (props[name] === null || props[name] == undefined)
         target[name] = props[name];
     return target;
   }

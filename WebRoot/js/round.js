@@ -1,5 +1,5 @@
 function round(num, dec) {
-  var strNum = num + ""; /*把要转换的小数转换成字符串*/
+  var strNum = String(num); /*把要转换的小数转换成字符串*/
   var index = strNum.indexOf("."); /*获取小数点的位置*/
   if (index < 0) {
     return num; /*如果没有小数点，那么无需四舍五入，返回这个整数*/

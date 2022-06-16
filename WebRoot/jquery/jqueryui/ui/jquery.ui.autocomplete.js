@@ -165,7 +165,7 @@
         .menu({
           focus: function (event, ui) {
             var item = ui.item.data("item.autocomplete");
-            if (false !== self._trigger("focus", event, { item: item })) {
+            if (self._trigger("focus", event, { item: item }) !== false) {
               // use value to match what will end up in the input, if it was a key event
               if (/^key/.test(event.originalEvent.type)) {
                 self.element.val(item.value);
@@ -189,7 +189,7 @@
               }, 1);
             }
 
-            if (false !== self._trigger("select", event, { item: item })) {
+            if (self._trigger("select", event, { item: item }) !== false) {
               self.element.val(item.value);
             }
             // reset the term after the select event
@@ -284,7 +284,7 @@
     },
 
     search: function (value, event) {
-      value = value != null ? value : this.element.val();
+      value = value !== null ? value : this.element.val();
 
       // always save the actual value, not the one passed as an argument
       this.term = this.element.val();

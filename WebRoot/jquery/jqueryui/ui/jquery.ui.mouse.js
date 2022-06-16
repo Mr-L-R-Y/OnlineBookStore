@@ -31,8 +31,8 @@
         })
         .bind("click." + this.widgetName, function (event) {
           if (
-            true ===
-            $.data(event.target, self.widgetName + ".preventClickEvent")
+            $.data(event.target, self.widgetName + ".preventClickEvent") ===
+            true
           ) {
             $.removeData(event.target, self.widgetName + ".preventClickEvent");
             event.stopImmediatePropagation();
@@ -87,7 +87,7 @@
 
       // Click event may never have fired (Gecko & Opera)
       if (
-        true === $.data(event.target, this.widgetName + ".preventClickEvent")
+        $.data(event.target, this.widgetName + ".preventClickEvent") === true
       ) {
         $.removeData(event.target, this.widgetName + ".preventClickEvent");
       }

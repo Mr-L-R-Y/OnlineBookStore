@@ -252,7 +252,7 @@ jQuery.effects ||
         value = styles[name];
         if (
           // ignore null and undefined values
-          value == null ||
+          value === null ||
           // ignore functions (when does this occur?)
           $.isFunction(value) ||
           // shorthand styles that need to be expanded
@@ -584,15 +584,11 @@ jQuery.effects ||
 
         if ($.fx.off || !effectMethod) {
           // delegate to the original method (e.g., .show()) if possible
-          if (mode) {
-            return this[mode](args2.duration, args2.callback);
-          } else {
-            return this.each(function () {
+          return mode ? this[mode](args2.duration, args2.callback) : this.each(function () {
               if (args2.callback) {
                 args2.callback.call(this);
               }
             });
-          }
         }
 
         return effectMethod.call(this, args2);

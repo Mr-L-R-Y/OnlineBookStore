@@ -74,11 +74,8 @@
 
     scrollParent: function () {
       var scrollParent;
-      if (
-        ($.browser.msie && /(static|relative)/.test(this.css("position"))) ||
-        /absolute/.test(this.css("position"))
-      ) {
-        scrollParent = this.parents()
+      scrollParent = ($.browser.msie && /(static|relative)/.test(this.css("position"))) ||
+        /absolute/.test(this.css("position")) ? this.parents()
           .filter(function () {
             return (
               /(relative|absolute|fixed)/.test($.curCSS(this, "position", 1)) &&
@@ -89,9 +86,7 @@
               )
             );
           })
-          .eq(0);
-      } else {
-        scrollParent = this.parents()
+          .eq(0) : this.parents()
           .filter(function () {
             return /(auto|scroll)/.test(
               $.curCSS(this, "overflow", 1) +
@@ -100,7 +95,6 @@
             );
           })
           .eq(0);
-      }
 
       return /fixed/.test(this.css("position")) || !scrollParent.length
         ? $(document)
@@ -205,7 +199,7 @@
   // selectors
   function focusable(element, isTabIndexNotNaN) {
     var nodeName = element.nodeName.toLowerCase();
-    if ("area" === nodeName) {
+    if (nodeName === "area") {
       var map = element.parentNode,
         mapName = map.name,
         img;
@@ -213,12 +207,12 @@
         return false;
       }
       img = $("img[usemap=#" + mapName + "]")[0];
-      return !!img && visible(img);
+      return Boolean(img) && visible(img);
     }
     return (
       (/input|select|textarea|button|object/.test(nodeName)
         ? !element.disabled
-        : "a" == nodeName
+        : nodeName == "a"
         ? element.href || isTabIndexNotNaN
         : isTabIndexNotNaN) &&
       // the element and all of its ancestors must be visible
@@ -240,7 +234,7 @@
 
   $.extend($.expr[":"], {
     data: function (elem, i, match) {
-      return !!$.data(elem, match[3]);
+      return Boolean($.data(elem, match[3]));
     },
 
     focusable: function (element) {

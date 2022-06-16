@@ -31,15 +31,11 @@
         form = radio.form,
         radios = $([]);
       if (name) {
-        if (form) {
-          radios = $(form).find("[name='" + name + "']");
-        } else {
-          radios = $("[name='" + name + "']", radio.ownerDocument).filter(
+        radios = form ? $(form).find("[name='" + name + "']") : $("[name='" + name + "']", radio.ownerDocument).filter(
             function () {
               return !this.form;
             }
           );
-        }
       }
       return radios;
     };
@@ -65,7 +61,7 @@
       }
 
       this._determineButtonType();
-      this.hasTitle = !!this.buttonElement.attr("title");
+      this.hasTitle = Boolean(this.buttonElement.attr("title"));
 
       var self = this,
         options = this.options,

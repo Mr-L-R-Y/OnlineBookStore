@@ -64,7 +64,7 @@
     _tabId: function (a) {
       return (
         (a.title &&
-          a.title.replace(/\s/g, "_").replace(/[^\w\u00c0-\uFFFF-]/g, "")) ||
+          a.title.replace(/\s/g, "_").replace(/[^\w\u00c0-\uFFFF-]/gu, "")) ||
         this.options.idPrefix + getNextTabId()
       );
     },

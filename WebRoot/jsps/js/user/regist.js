@@ -92,7 +92,7 @@ function validateLoginname() {
      */
     $("#" + id + "Error").text("用户名长度必须在3 ~ 20之间！");
     showError($("#" + id + "Error"));
-    false;
+    
   }
   /*
    * 3. 是否注册校验
@@ -146,7 +146,7 @@ function validateLoginpass() {
      */
     $("#" + id + "Error").text("密码长度必须在3 ~ 20之间！");
     showError($("#" + id + "Error"));
-    false;
+    
   }
   return true;
 }
@@ -181,7 +181,7 @@ function validateReloginpass() {
      */
     $("#" + id + "Error").text("两次输入不一致！");
     showError($("#" + id + "Error"));
-    false;
+    
   }
   return true;
 }
@@ -220,7 +220,7 @@ function validateEmail() {
      */
     $("#" + id + "Error").text("错误的Email格式！");
     showError($("#" + id + "Error"));
-    false;
+    
   }
   /*
    * 3. 是否注册校验
@@ -274,7 +274,7 @@ function validateVerifyCode() {
      */
     $("#" + id + "Error").text("错误的验证码！");
     showError($("#" + id + "Error"));
-    false;
+    
   }
   /*
    * 3. 是否正确

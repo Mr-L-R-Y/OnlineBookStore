@@ -162,11 +162,7 @@
           }
 
           step = self.options.step;
-          if (self.options.values && self.options.values.length) {
-            curVal = newVal = self.values(index);
-          } else {
-            curVal = newVal = self.value();
-          }
+          curVal = newVal = self.options.values && self.options.values.length ? self.values(index) : self.value();
 
           switch (event.keyCode) {
             case $.ui.keyCode.HOME:
@@ -501,11 +497,7 @@
           }
           this._refreshValue();
         } else {
-          if (this.options.values && this.options.values.length) {
-            return this._values(index);
-          } else {
-            return this.value();
-          }
+          return this.options.values && this.options.values.length ? this._values(index) : this.value();
         }
       } else {
         return this._values();

@@ -586,18 +586,10 @@
         verticalDirection = this._getDragVerticalDirection(),
         horizontalDirection = this._getDragHorizontalDirection();
 
-      if (this.floating && horizontalDirection) {
-        return (
-          (horizontalDirection == "right" && isOverRightHalf) ||
-          (horizontalDirection == "left" && !isOverRightHalf)
-        );
-      } else {
-        return (
-          verticalDirection &&
+      return this.floating && horizontalDirection ? ((horizontalDirection == "right" && isOverRightHalf) ||
+          (horizontalDirection == "left" && !isOverRightHalf)) : (verticalDirection &&
           ((verticalDirection == "down" && isOverBottomHalf) ||
-            (verticalDirection == "up" && !isOverBottomHalf))
-        );
-      }
+            (verticalDirection == "up" && !isOverBottomHalf)));
     },
 
     _getDragVerticalDirection: function () {
@@ -984,7 +976,7 @@
         obj = obj.split(" ");
       }
       if ($.isArray(obj)) {
-        obj = { left: +obj[0], top: +obj[1] || 0 };
+        obj = { left: Number(obj[0]), top: Number(obj[1]) || 0 };
       }
       if ("left" in obj) {
         this.offset.click.left = obj.left + this.margins.left;

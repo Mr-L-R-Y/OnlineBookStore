@@ -232,7 +232,7 @@
         maxZ,
         thisZ;
 
-      if (false === self._trigger("beforeClose", event)) {
+      if (self._trigger("beforeClose", event) === false) {
         return;
       }
 
@@ -504,11 +504,7 @@
     _minHeight: function () {
       var options = this.options;
 
-      if (options.height === "auto") {
-        return options.minHeight;
-      } else {
-        return Math.min(options.minHeight, options.height);
-      }
+      return options.height === "auto" ? options.minHeight : Math.min(options.minHeight, options.height);
     },
 
     _position: function (position) {
@@ -533,7 +529,7 @@
           }
 
           $.each(["left", "top"], function (i, offsetPosition) {
-            if (+myAt[i] === myAt[i]) {
+            if (Number(myAt[i]) === myAt[i]) {
               offset[i] = myAt[i];
               myAt[i] = offsetPosition;
             }
@@ -609,7 +605,7 @@
           break;
         case "closeText":
           // ensure that we always pass a string
-          self.uiDialogTitlebarCloseText.text("" + value);
+          self.uiDialogTitlebarCloseText.text(String(value));
           break;
         case "dialogClass":
           uiDialog
@@ -656,7 +652,7 @@
         case "title":
           // convert whatever was passed in o a string, for html() to not throw up
           $(".ui-dialog-title", self.uiDialogTitlebar).html(
-            "" + (value || "&#160;")
+            String(value || "&#160;")
           );
           break;
       }
@@ -835,11 +831,7 @@
           document.body.offsetHeight
         );
 
-        if (scrollHeight < offsetHeight) {
-          return $(window).height() + "px";
-        } else {
-          return scrollHeight + "px";
-        }
+        return scrollHeight < offsetHeight ? $(window).height() + "px" : scrollHeight + "px";
         // handle "good" browsers
       } else {
         return $(document).height() + "px";
@@ -859,11 +851,7 @@
           document.body.offsetWidth
         );
 
-        if (scrollWidth < offsetWidth) {
-          return $(window).width() + "px";
-        } else {
-          return scrollWidth + "px";
-        }
+        return scrollWidth < offsetWidth ? $(window).width() + "px" : scrollWidth + "px";
         // handle "good" browsers
       } else {
         return $(document).width() + "px";
