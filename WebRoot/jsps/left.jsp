@@ -16,8 +16,8 @@
 <!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
-<script type="text/javascript"
-	src="<c:url value='/jquery/jquery-1.5.1.js'/>"></script>
+<!-- <script type="text/javascript" src="<c:url value='/jquery/jquery-1.5.1.js'/>"></script> -->
+<script type="text/javascript" src="<c:url value='/jquery/jquery-3.6.0.js'/>"></script>
 <script type="text/javascript" src="<c:url value='/menu/mymenu.js'/>"></script>
 <link rel="stylesheet" href="<c:url value='/menu/mymenu.css'/>"
 	type="text/css" media="all">
