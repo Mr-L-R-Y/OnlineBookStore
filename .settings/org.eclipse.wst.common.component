@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-modules id="moduleCoreId" project-version="1.5.0">
-    <wb-module deploy-name="ZWJShop">
+    <wb-module deploy-name="OnlineBookStore">
         <wb-resource deploy-path="/" source-path="/WebRoot"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
-        <property name="context-root" value="/ZWJShop"/>
-        <property name="java-output-path" value="/ZWJShop/WebRoot/WEB-INF/classes"/>
+        <property name="context-root" value="/OnlineBookStore"/>
+        <property name="java-output-path" value="/OnlineBookStore/WebRoot/WEB-INF/classes"/>
     </wb-module>
 </project-modules>

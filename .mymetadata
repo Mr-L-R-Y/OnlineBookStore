@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-module
   type="WEB"
-  name="ZWJShop"
+  name="OnlineBookStore"
   id="myeclipse.1560837980011"
-  context-root="/ZWJShop"
+  context-root="/OnlineBookStore"
   j2ee-spec="5.0"
-  archive="ZWJShop.war">
+  archive="OnlineBookStore.war">
   <attributes>
     <attribute name="webrootdir" value="WebRoot" />
   </attributes>
