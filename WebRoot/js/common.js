@@ -1,3 +1,3 @@
 function _change() {
-	$("#vCode").attr("src", "/goods/VerifyCodeServlet?" + new Date().getTime());
+  $("#vCode").attr("src", "/goods/VerifyCodeServlet?" + new Date().getTime());
 }
