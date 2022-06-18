@@ -18,7 +18,8 @@
 	-->
 	<link rel="stylesheet" type="text/css" href="<c:url value='/jsps/pager/pager.css'/>" />
     <script type="text/javascript" src="<c:url value='/jsps/pager/pager.js'/>"></script>
-	<script src="<c:url value='/jquery/jquery-1.5.1.js'/>"></script>
+	<!-- <script src="<c:url value='/jquery/jquery-1.5.1.js'/>"></script> -->
+	<script src="<c:url value='/jquery/jquery-3.6.0.js'/>"></script>
 	
 	<link rel="stylesheet" type="text/css" href="<c:url value='/jsps/css/book/desc.css'/>">
 	<script src="<c:url value='/jsps/js/book/desc.js'/>"></script>
