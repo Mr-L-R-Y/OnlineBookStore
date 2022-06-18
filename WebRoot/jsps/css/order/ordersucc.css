@@ -5,7 +5,7 @@ body {
 }
 
 #linkPay {
-	background: url(/ZWJShop/images/bg_btns.png) no-repeat;
+	background: url(/OnlineBookStore/images/bg_btns.png) no-repeat;
 	display: inline-block;
 	background-position: 0 -300px;
 	height: 20px;
@@ -19,7 +19,7 @@ body {
 }
 
 #linkPay:HOVER {
-	background: url(/ZWJShop/images/bg_btns.png) no-repeat;
+	background: url(/OnlineBookStore/images/bg_btns.png) no-repeat;
 	display: inline-block;
 	background-position: 0 -330px;
 	height: 20px;
