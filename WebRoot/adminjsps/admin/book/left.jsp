@@ -44,7 +44,7 @@
 				.add(
 						"${parent.cname}",
 						"${child.cname}",
-						"/ZWJShop/servlet/AdminBookServlet?method=findByCategory&cid=${child.cid}",
+						"/OnlineBookStore/servlet/AdminBookServlet?method=findByCategory&cid=${child.cid}",
 						"body");
 		</c:forEach>
 		</c:forEach>
