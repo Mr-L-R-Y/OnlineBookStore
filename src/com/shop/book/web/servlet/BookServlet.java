@@ -16,6 +16,7 @@ import cn.itcast.commons.CommonUtils;
 
 import cn.itcast.servlet.BaseServlet;
 
+@SuppressWarnings("serial")
 public class BookServlet extends BaseServlet {
 private BookService bookService = new BookService();
 	
